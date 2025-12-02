@@ -1,0 +1,22 @@
+services:
+  csd214:
+    image: 'mysql:latest'
+    container_name: 'lab4'
+    environment:
+      MYSQL_DATABASE: lab4
+      MYSQL_USER: fcarella
+      MYSQL_PASSWORD: itstudies12345
+      MYSQL_ROOT_PASSWORD: itstudies12345
+    ports:
+      - "3334:3306"
+    volumes:
+      - "./volumes/mysql:/var/lib/mysql"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "root", "-pitstudies12345"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+networks:
+  csd214_lab4-network:
+    driver: bridge

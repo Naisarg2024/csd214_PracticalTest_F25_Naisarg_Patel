@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+             https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
+             version="3.0">
+
+    <persistence-unit name="csd214-unit">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>ca.saultcollege.entities.ElectronicDeviceEntity</class>
+        <class>ca.saultcollege.entities.SmartphoneEntity</class>
+        <class>ca.saultcollege.entities.LaptopEntity</class>
+        <properties>
+
+            <!-- JDBC connection -->
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3333/csd214_test_db"/>
+
+            <property name="jakarta.persistence.jdbc.user" value="student"/>
+            <property name="jakarta.persistence.jdbc.password" value="student123"/>
+
+            <!-- Hibernate config -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL8Dialect"/>
+        </properties>
+    </persistence-unit>
+</persistence>
